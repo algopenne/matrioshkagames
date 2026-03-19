@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     default: 'Nim - Personal website template',
     template: '%s | Nim'
   },
-  description:  'Nim is a free and open-source personal website template built with Next.js 15, React 19 and Motion-Primitives.',
+  description: 'Nim is a free and open-source personal website template built with Next.js 15, React 19 and Motion-Primitives.',
 };
 
 const geist = Geist({
@@ -44,17 +44,17 @@ export default function RootLayout({
         className={`${geist.variable} ${geistMono.variable} bg-white tracking-tight antialiased dark:bg-zinc-950`}
       >
         <ThemeProvider
-          enableSystem={true}
+          enableSystem={false}
           attribute="class"
           storageKey="theme"
-          defaultTheme="system"
+          defaultTheme="dark"
         >
-          <div className="flex min-h-screen w-full flex-col font-[family-name:var(--font-inter-tight)]">
-            <div className="relative mx-auto w-full max-w-screen-sm flex-1 px-4 pt-20">
-              <Header />
+          <div className="flex min-h-screen w-full flex-col font-[family-name:var(--font-inter-tight)] bg-black text-white">
+            <Header />
+            <div className="w-full flex-1">
               {children}
-              <Footer />
             </div>
+            <Footer />
           </div>
         </ThemeProvider>
       </body>

@@ -1,84 +1,39 @@
 'use client'
-import { AnimatedBackground } from '@/components/ui/animated-background'
-import { TextLoop } from '@/components/ui/text-loop'
-import { MonitorIcon, MoonIcon, SunIcon } from 'lucide-react'
-import { useTheme } from 'next-themes'
-import { useEffect, useState } from 'react'
-
-const THEMES_OPTIONS = [
-  {
-    label: 'Light',
-    id: 'light',
-    icon: <SunIcon className="h-4 w-4" />,
-  },
-  {
-    label: 'Dark',
-    id: 'dark',
-    icon: <MoonIcon className="h-4 w-4" />,
-  },
-  {
-    label: 'System',
-    id: 'system',
-    icon: <MonitorIcon className="h-4 w-4" />,
-  },
-]
-
-function ThemeSwitch() {
-  const [mounted, setMounted] = useState(false)
-  const { theme, setTheme } = useTheme()
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  if (!mounted) {
-    return null
-  }
-
-  return (
-    <AnimatedBackground
-      className="pointer-events-none rounded-lg bg-zinc-100 dark:bg-zinc-800"
-      defaultValue={theme}
-      transition={{
-        type: 'spring',
-        bounce: 0,
-        duration: 0.2,
-      }}
-      enableHover={false}
-      onValueChange={(id) => {
-        setTheme(id as string)
-      }}
-    >
-      {THEMES_OPTIONS.map((theme) => {
-        return (
-          <button
-            key={theme.id}
-            className="inline-flex h-7 w-7 items-center justify-center text-zinc-500 transition-colors duration-100 focus-visible:outline-2 data-[checked=true]:text-zinc-950 dark:text-zinc-400 dark:data-[checked=true]:text-zinc-50"
-            type="button"
-            aria-label={`Switch to ${theme.label} theme`}
-            data-id={theme.id}
-          >
-            {theme.icon}
-          </button>
-        )
-      })}
-    </AnimatedBackground>
-  )
-}
+import { STUDIO_INFO, SOCIAL_LINKS } from './data'
 
 export function Footer() {
   return (
-    <footer className="mt-24 border-t border-zinc-100 px-0 py-4 dark:border-zinc-800">
-      <div className="flex items-center justify-between">
-        <a href="https://github.com/ibelick/nim" target="_blank">
-          <TextLoop className="text-xs text-zinc-500">
-            <span>© 2024 Nim.</span>
-            <span>Built with Motion-Primitives.</span>
-          </TextLoop>
-        </a>
-        <div className="text-xs text-zinc-400">
-          <ThemeSwitch />
+    <footer className="w-full bg-black text-white py-24 px-8 border-t border-zinc-900 border-opacity-50">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center md:items-start justify-between gap-12 text-center md:text-left">
+        <div className="flex flex-col gap-4">
+          <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter">
+            {STUDIO_INFO.name}
+          </h2>
+          <a href={`mailto:${STUDIO_INFO.contactEmail}`} className="text-zinc-500 hover:text-white transition-colors text-lg md:text-xl font-medium tracking-wide">
+            {STUDIO_INFO.contactEmail}
+          </a>
         </div>
+
+        <div className="flex flex-col md:items-end gap-4">
+          <h3 className="text-zinc-600 uppercase tracking-widest font-bold text-sm mb-2">Connect</h3>
+          <nav className="flex flex-col gap-2">
+            {SOCIAL_LINKS.map((link) => (
+              <a
+                key={link.label}
+                href={link.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-2xl font-bold uppercase tracking-wide hover:ml-2 transition-all hover:text-blue-500"
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto mt-24 pt-8 border-t border-zinc-900 flex justify-between text-zinc-600 text-sm font-semibold uppercase tracking-widest">
+        <span>© {new Date().getFullYear()} {STUDIO_INFO.name}. All rights reserved.</span>
       </div>
     </footer>
   )
