@@ -3,7 +3,7 @@ import { STUDIO_INFO, SOCIAL_LINKS } from './data'
 
 export function Footer() {
   return (
-    <footer className="w-full bg-black text-white py-24 px-8 border-t border-zinc-900 border-opacity-50">
+    <footer id="contact" className="w-full bg-black text-white py-24 px-8 border-t border-zinc-900 border-opacity-50">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center md:items-start justify-between gap-12 text-center md:text-left">
         <div className="flex flex-col gap-4">
           <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter">

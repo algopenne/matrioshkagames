@@ -1,7 +1,7 @@
 'use client'
 import { motion, useScroll, useTransform } from 'motion/react'
 import { GAMES, STUDIO_INFO } from './data'
-import { ArrowRightIcon } from 'lucide-react'
+import { ArrowRightIcon, ChevronDownIcon } from 'lucide-react'
 
 const TRANSITION_SECTION = {
   duration: 0.6,
@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <main className="w-full flex flex-col">
       {/* Hero Section */}
-      <section className="relative h-[80vh] w-full flex items-center justify-center overflow-hidden bg-black">
+      <section className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-black">
         <div className="absolute inset-0 z-0">
           {/* Fallback abstract background if no video, using a subtle gradient */}
           <div className="absolute inset-0 bg-gradient-to-b from-zinc-900 to-black opacity-80 z-10" />
@@ -45,10 +45,25 @@ export default function Home() {
             {STUDIO_INFO.tagline}
           </motion.p>
         </div>
+
+        {/* Scroll down indicator */}
+        <motion.button
+          onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
+          animate={{ y: [0, 15, 0] }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 text-white hover:text-white/70 transition-colors cursor-pointer"
+          aria-label="Scroll down to games"
+        >
+          <ChevronDownIcon className="w-16 h-16" />
+        </motion.button>
       </section>
 
       {/* Games Horizontal Bands */}
-      <section className="w-full">
+      <section id="games" className="w-full">
         {GAMES.map((game, index) => (
           <motion.a
             key={game.id}
@@ -59,7 +74,7 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-10%" }}
             transition={{ ...TRANSITION_SECTION, delay: 0.1 }}
-            className={`group relative flex flex-col md:flex-row w-full min-h-[60vh] md:h-[70vh] items-center justify-between overflow-hidden ${game.color}`}
+            className={`group relative flex flex-col md:flex-row w-full min-h-[50vh] md:h-[20vh] items-center justify-between overflow-hidden ${game.color}`}
           >
             {/* Background Hover Effect */}
             <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none" />
@@ -75,7 +90,7 @@ export default function Home() {
 
               <div className="flex items-center gap-4 text-white font-bold text-lg md:text-xl group/btn">
                 <span className="bg-black text-white px-6 py-3 rounded-full uppercase tracking-wider group-hover/btn:bg-white group-hover/btn:text-black transition-colors duration-300">
-                  {game.releaseDate === 'Available Now' ? 'Play Now' : 'Wishlist'}
+                  {game.releaseDate === 'Available Now' ? 'Play Now' : 'Learn More'}
                 </span>
                 <ArrowRightIcon className="w-8 h-8 group-hover/btn:translate-x-2 transition-transform duration-300" />
               </div>
