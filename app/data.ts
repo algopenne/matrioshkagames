@@ -15,13 +15,22 @@ type SocialLink = {
 
 export const GAMES: Game[] = [
   {
+    id: 'gobby-gang',
+    title: 'Gobby Gang',
+    tagline: 'A chaotic 4-player co-op physics heist game.',
+    releaseDate: 'Coming Soon',
+    link: 'https://store.steampowered.com/app/2648720/Gobby_Gang/',
+    imageUrl: '/gobbygang.webp',
+    color: 'bg-indigo-600',
+  },
+  {
     id: 'expedition-agartha',
     title: 'Expedition Agartha',
     tagline: 'A high-stakes first person slasher.',
     releaseDate: 'Available Now',
     link: 'https://store.steampowered.com/app/1552620/Expedition_Agartha/',
     imageUrl: '/expedition-agartha.png',
-    color: 'bg-zinc-800',
+    color: 'bg-emerald-600',
   },
   {
     id: 'fallen-angel',
@@ -30,8 +39,9 @@ export const GAMES: Game[] = [
     releaseDate: 'Available Now',
     link: 'https://store.steampowered.com/app/1124560/Fallen_Angel/',
     imageUrl: '/fallen-angel.jpg',
-    color: 'bg-red-950',
+    color: 'bg-rose-600',
   },
+  /*
   {
     id: 'fling-to-the-finish',
     title: 'Fling to the Finish',
@@ -68,13 +78,14 @@ export const GAMES: Game[] = [
     imageUrl: '/code tycoon.jpg',
     color: 'bg-green-700',
   }
+  */
 ]
 
 export const STUDIO_INFO = {
   name: 'Matrioshka Games',
   description: 'WHERE IMAGINATION MEETS MASTERY',
   tagline: 'We bring wild ideas to life.',
-  contactEmail: 'contact@matrioshkagames.com'
+  contactEmail: 'hunterwu@matrioshkagames.com'
 }
 
 export const SOCIAL_LINKS: SocialLink[] = [
@@ -88,6 +99,6 @@ export const SOCIAL_LINKS: SocialLink[] = [
   },
   {
     label: 'YouTube',
-    link: 'https://www.youtube.com/@matrioshkagames7620',
+    link: 'https://www.youtube.com/@matrioshkagames7620'
   }
 ]

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Space_Grotesk, Space_Mono } from 'next/font/google'
 import './globals.css'
 import { Header } from './header'
 import { Footer } from './footer'
@@ -12,24 +12,25 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://nim-fawn.vercel.app/'),
+  metadataBase: new URL('https://matrioshkagames.com'),
   alternates: {
     canonical: '/'
   },
   title: {
-    default: 'Nim - Personal website template',
-    template: '%s | Nim'
+    default: 'Matrioshka Games',
+    template: '%s | Matrioshka Games'
   },
-  description: 'Nim is a free and open-source personal website template built with Next.js 15, React 19 and Motion-Primitives.',
+  description: 'Matrioshka Games is a video game studio based in Philadelphia, PA.',
 };
 
-const geist = Geist({
-  variable: '--font-geist',
+const primaryFont = Space_Grotesk({
+  variable: '--font-primary',
   subsets: ['latin'],
 })
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
+const monoFont = Space_Mono({
+  variable: '--font-mono',
+  weight: ['400', '700'],
   subsets: ['latin'],
 })
 
@@ -39,9 +40,9 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body
-        className={`${geist.variable} ${geistMono.variable} bg-white tracking-tight antialiased dark:bg-zinc-950`}
+        className={`${primaryFont.variable} ${monoFont.variable} bg-white tracking-tight antialiased dark:bg-zinc-950`}
       >
         <ThemeProvider
           enableSystem={false}
@@ -49,7 +50,7 @@ export default function RootLayout({
           storageKey="theme"
           defaultTheme="dark"
         >
-          <div className="flex min-h-screen w-full flex-col font-[family-name:var(--font-inter-tight)] bg-black text-white">
+          <div className="flex min-h-screen w-full flex-col font-[family-name:var(--font-primary)] bg-black text-white">
             <Header />
             <div className="w-full flex-1">
               {children}
