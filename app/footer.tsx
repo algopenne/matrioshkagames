@@ -1,5 +1,6 @@
 'use client'
 import { STUDIO_INFO, SOCIAL_LINKS } from './data'
+import { ArrowUpIcon } from 'lucide-react'
 
 export function Footer() {
   return (
@@ -51,9 +52,18 @@ export function Footer() {
       </div>
 
       {/* Bottom Copyright anchoring the design */}
-      <div className="max-w-7xl w-full mx-auto flex flex-col md:flex-row justify-between items-center text-zinc-600 text-xs md:text-sm font-semibold uppercase tracking-widest z-10 relative mt-auto pt-8 border-t border-zinc-900/50 gap-4">
-        <span>© {new Date().getFullYear()} {STUDIO_INFO.name}</span>
-        <span>All rights reserved.</span>
+      <div className="max-w-7xl w-full mx-auto flex flex-col md:flex-row justify-between items-center text-zinc-600 text-xs md:text-sm font-semibold uppercase tracking-widest z-10 relative mt-auto pt-8 border-t border-zinc-900/50 gap-6">
+        <span className="md:w-1/3 text-center md:text-left">© {new Date().getFullYear()} {STUDIO_INFO.name}</span>
+        
+        <button 
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="md:w-1/3 flex items-center justify-center gap-2 hover:text-emerald-500 hover:scale-105 transition-all duration-300 cursor-pointer group font-bold text-zinc-400"
+        >
+          Back To Top
+          <ArrowUpIcon className="w-4 h-4 group-hover:-translate-y-1 transition-transform duration-300" />
+        </button>
+
+        <span className="md:w-1/3 text-center md:text-right">All rights reserved.</span>
       </div>
     </footer>
   )

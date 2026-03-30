@@ -26,17 +26,23 @@ export function Header() {
 
       <nav className="flex items-center gap-6 md:gap-12 text-sm md:text-lg font-bold uppercase tracking-widest text-white/90">
         <a
-          href="#contact"
+          href="/#contact"
           className="hover:text-white transition-colors cursor-pointer"
         >
           Contact
         </a>
         <a
-          href="#games"
+          href="/#games"
           className="hover:text-white transition-colors hidden sm:block cursor-pointer"
         >
           Games
         </a>
+        <Link
+          href="/careers"
+          className="hover:text-emerald-500 transition-colors cursor-pointer text-emerald-400"
+        >
+          Careers
+        </Link>
       </nav>
     </motion.header>
   )

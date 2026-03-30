@@ -74,14 +74,17 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-10%" }}
             transition={{ ...TRANSITION_SECTION, delay: 0.1 }}
-            className={`group relative flex flex-col md:flex-row w-full min-h-[50vh] md:h-[20vh] items-center justify-between overflow-hidden ${game.color}`}
+            className={`group relative flex flex-col md:flex-row w-full min-h-[50vh] md:min-h-[40vh] items-stretch justify-between overflow-hidden ${game.color}`}
           >
             {/* Background Hover Effect */}
             <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none" />
 
             {/* Text Content */}
-            <div className="relative z-20 flex-1 p-8 md:p-24 flex flex-col justify-center h-full max-w-3xl">
-              <h2 className="text-5xl md:text-8xl font-extrabold uppercase tracking-tight text-white mb-4 group-hover:scale-105 transition-transform duration-500 origin-left">
+            <div className="relative z-20 w-full md:w-1/2 p-8 md:p-12 lg:p-24 flex flex-col justify-center">
+              <h2
+                className="text-5xl md:text-8xl font-extrabold uppercase tracking-tight text-white mb-4 group-hover:scale-105 transition-transform duration-500 origin-left hyphens-auto break-words"
+                lang="en"
+              >
                 {game.title}
               </h2>
               <p className="text-xl md:text-3xl font-medium text-white/90 mb-8 max-w-xl">
@@ -97,7 +100,7 @@ export default function Home() {
             </div>
 
             {/* Media / Image */}
-            <div className="relative z-0 md:absolute md:inset-y-0 md:right-0 w-full md:w-[50vw] h-[40vh] md:h-full overflow-hidden">
+            <div className="relative z-0 w-full md:w-1/2 h-[40vh] md:h-auto overflow-hidden shrink-0">
               <img
                 src={game.imageUrl}
                 alt={`${game.title} background`}
