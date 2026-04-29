@@ -11,7 +11,22 @@ export default function CareersPage() {
     <main className="min-h-screen bg-black text-white pt-32 pb-24 px-6 md:px-12 w-full flex flex-col items-center selection:bg-emerald-500 selection:text-white">
       <div className="max-w-4xl w-full flex flex-col gap-16">
         
-        {/* Header Section */}
+        {/* Current State: No Openings */}
+        <section className="flex flex-col gap-6 pb-12 text-center items-center">
+          <h1 className="text-6xl md:text-8xl font-extrabold uppercase tracking-tight leading-none hyphens-auto break-words" lang="en">
+            Careers
+          </h1>
+          <p className="text-zinc-400 max-w-2xl text-xl mt-4 font-light">
+            There are currently no open positions. Please check back later!
+          </p>
+        </section>
+
+        {/* 
+        ============================================================
+        Previous Posting (Commented Out)
+        ============================================================
+        
+        // Header Section
         <section className="flex flex-col gap-6 border-b border-white/20 pb-12">
           <p className="font-[family-name:var(--font-mono)] text-emerald-500 uppercase tracking-widest text-sm font-bold">
             Open Role
@@ -28,7 +43,7 @@ export default function CareersPage() {
           </a>
         </section>
 
-        {/* Content Section */}
+        // Content Section
         <section className="flex flex-col gap-12 text-lg md:text-xl text-zinc-300 font-light leading-relaxed">
           <div className="flex flex-col gap-6">
             <h2 className="text-3xl md:text-5xl font-bold text-white uppercase tracking-tight">
@@ -40,7 +55,7 @@ export default function CareersPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-4">
-            {/* Responsibilities */}
+            // Responsibilities
             <div className="flex flex-col gap-4">
               <h3 className="text-xl md:text-2xl font-bold text-white uppercase tracking-wide">
                 What You'll Do
@@ -52,7 +67,7 @@ export default function CareersPage() {
               </ul>
             </div>
             
-            {/* Qualifications */}
+            // Qualifications
             <div className="flex flex-col gap-4">
               <h3 className="text-xl md:text-2xl font-bold text-white uppercase tracking-wide">
                 What We're Looking For
@@ -66,7 +81,7 @@ export default function CareersPage() {
           </div>
         </section>
 
-        {/* Bottom CTA */}
+        // Bottom CTA
         <section className="mt-8 border-t border-white/20 pt-16 pb-8 flex flex-col items-center text-center gap-8">
           <h2 className="text-4xl md:text-6xl font-extrabold uppercase tracking-tight text-white max-w-2xl">
             Ready to Build Games?
@@ -82,6 +97,7 @@ export default function CareersPage() {
             <ArrowRightIcon className="w-8 h-8 group-hover:translate-x-2 transition-transform" />
           </a>
         </section>
+        */}
 
       </div>
     </main>
