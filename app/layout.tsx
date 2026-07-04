@@ -21,6 +21,15 @@ export const metadata: Metadata = {
     template: '%s | Matrioshka Games'
   },
   description: 'Matrioshka Games is a video game studio based in Philadelphia, PA.',
+  manifest: '/site.webmanifest',
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
 };
 
 const primaryFont = Space_Grotesk({
