@@ -1,40 +1,146 @@
-<img src="/public/cover.jpg" alt="Cover image representing Nim, a personal website template" width="100%" />
+# Matrioshka Games — Studio Website
 
-Nim is a free and open-source personal website template built with Next.js 15, React 19, Tailwind CSS v4, and Motion. Designed for developers, designers, and founders, it combines minimalism with delightful animated components powered by [Motion-Primitives](https://motion-primitives.com).
+The official website for **Matrioshka Games**, a video game studio based in Philadelphia, PA.
 
-Live demo: [https://nim-fawn.vercel.app](https://nim-fawn.vercel.app)
+Live site: [https://matrioshkagames.com](https://matrioshkagames.com)
 
-## Features
+## Tech Stack
 
-- Minimal one-page portfolio layout.
-- Blog support with MDX.
-- Responsive and accessible design.
-- Easy to use
-- [Motion-Primitives](https://motion-primitives.com) for animated components.
+| Layer | Technology |
+|---|---|
+| Framework | [Next.js 15](https://nextjs.org/) (static export) |
+| Language | TypeScript |
+| Styling | [Tailwind CSS v4](https://tailwindcss.com/) |
+| Animation | [Motion](https://motion.dev/) |
+| Content | [MDX](https://mdxjs.com/) (blog posts, careers) |
+| Fonts | Space Grotesk + Space Mono (Google Fonts) |
+| Hosting | Vercel (free Hobby tier — static export stays well within limits) |
+| Domain | matrioshkagames.com (managed via SiteGround) |
 
 ## Getting Started
 
-For detailed setup instructions, refer to the [Installation Guide](./INSTALLATION.md).
+**Prerequisites:** Node.js 20.x or later
 
 ```bash
-git clone https://github.com/ibelick/nim.git
-cd nim
+# Clone the repo
+git clone https://github.com/algopenne/matrioshkagames.git
+cd matrioshkagames
+
+# Install dependencies
 npm install
+
+# Start the dev server
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to see the site.
 
-## Contributing
+## Project Structure
 
-Contributions are welcome! Feel free to open issues or submit pull requests to improve Nim.
+```
+app/
+├── data.ts          # ← Edit this: studio info, games list, social links
+├── page.tsx         # Home page
+├── layout.tsx       # Root layout, metadata, fonts
+├── header.tsx       # Site header / nav
+├── footer.tsx       # Site footer
+├── blog/            # MDX blog posts (add new folders here)
+└── careers/         # MDX careers pages
+components/          # Shared UI components
+public/              # Static assets (game images, icons, etc.)
+```
+
+## Customizing Content
+
+All site data lives in [`app/data.ts`](./app/data.ts). Edit it to update:
+
+- **Studio info** — name, description, contact email
+- **Games list** — title, tagline, Steam link, cover image, theme color
+- **Social links** — Steam, Twitter/X, YouTube
+
+```ts
+// app/data.ts
+export const STUDIO_INFO = {
+  name: 'Matrioshka Games',
+  contactEmail: 'hunterwu@matrioshkagames.com',
+  // ...
+}
+
+export const GAMES: Game[] = [
+  {
+    id: 'your-game-id',
+    title: 'Your Game Title',
+    tagline: 'A short tagline.',
+    releaseDate: 'Coming Soon',
+    link: 'https://store.steampowered.com/app/...',
+    imageUrl: '/your-game-image.webp',  // put image in /public
+    color: 'bg-indigo-600',             // Tailwind color class for the banner
+  },
+  // ...
+]
+```
+
+## Adding Blog Posts
+
+Create a new folder inside `app/blog/` with a `page.mdx` file:
+
+```
+app/blog/your-post-slug/page.mdx
+```
+
+Example `page.mdx`:
+
+```mdx
+# Your Post Title
+
+Your content here...
+```
 
 ## Deployment
 
-You can deploy your site to any hosting platform that supports Next.js. For the easiest deployment experience, consider using Vercel:
+### Overview
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fibelick%2Fnim&env=NEXT_PUBLIC_SITE_URL&project-name=nim&repository-name=nim&redirect-url=https%3A%2F%2Ftwitter.com%2Fibelick&demo-title=Nim&demo-description=Nim%20is%20a%20free%20and%20open-source%20minimal%20personal%20website%20template%20built%20with%20Next.js%2015%2C%20React%2019%2C%20and%20Motion-Primitives.&demo-url=https%3A%2F%2Fnim.vercel.app&demo-image=https%3A%2F%2Fraw.githubusercontent.com%2Fibelick%2Fnim%2Frefs%2Fheads%2Fmain%2F.github%2Fassets%2Freadme.png&teamSlug=ibelick)
+The site uses `output: 'export'` in [`next.config.mjs`](./next.config.mjs), which generates a fully static site into the `/out` directory. This static build is deployed to **Vercel**, and the domain `matrioshkagames.com` is pointed to Vercel from **SiteGround**.
 
-## About
+### Auto-Deploy via GitHub (Recommended)
 
-Nim is designed to make personal branding effortless and beautiful. If you enjoy it, consider sharing it and exploring [Motion-Primitives Pro](https://pro.motion-primitives.com/).
+Push your changes to the `main` branch — Vercel will automatically pick up the push and trigger a new build. No manual steps needed.
+
+### Set Up a New Vercel Project from Scratch
+
+1. Go to [vercel.com/new](https://vercel.com/new) and import the GitHub repo.
+2. Framework preset: **Next.js**
+3. Build command: `npm run build`
+4. Output directory: `out`
+5. Click **Deploy**.
+
+### Connecting the Domain (SiteGround → Vercel)
+
+Since the domain is managed at SiteGround, you need to point its DNS to Vercel:
+
+1. In your **Vercel project** → Settings → Domains → add `matrioshkagames.com` and `www.matrioshkagames.com`.
+2. Vercel will provide the DNS records to set.
+3. Log into **SiteGround** → Websites → Manage → DNS Zone Editor.
+4. Add/update the following records:
+   - `A` record: `@` → `76.76.21.21` (Vercel's IP)
+   - `CNAME` record: `www` → `cname.vercel-dns.com`
+5. DNS propagation can take a few minutes to a few hours.
+
+> **Note on Webflow:** If a Webflow project is also connected to this domain, remove or update those DNS records first to avoid conflicts before pointing to Vercel.
+
+### Test the Production Build Locally
+
+```bash
+npm run build
+# Static output is in the /out directory
+
+npx serve out
+```
+
+## Scripts
+
+| Command | Description |
+|---|---|
+| `npm run dev` | Start the development server |
+| `npm run build` | Build the static site to `/out` |
+| `npm run lint` | Run ESLint |
